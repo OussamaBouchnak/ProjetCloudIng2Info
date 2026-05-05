@@ -5,12 +5,18 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const pool = new Pool({
+const poolOptions = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-});
+};
+
+if (process.env.PGSSLMODE) {
+  poolOptions.ssl = { rejectUnauthorized: false };
+}
+
+const pool = new Pool(poolOptions);
 
 app.use(cors());
 app.use(express.json());
