@@ -119,8 +119,7 @@
   </div>
 
   <script>
-    const API_URL = "http://chat-alb-488400875.us-east-1.elb.amazonaws.com";
-
+    const API_URL = "http://<ALB_DNS_PLACEHOLDER>"
     let username = prompt("Enter your username:");
     if (!username || !username.trim()) {
       username = "Anonymous";
